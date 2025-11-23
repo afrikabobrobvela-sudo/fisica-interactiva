@@ -202,3 +202,23 @@ input[type=range], select {
     /* Cae cada 1.5 segundos con efecto de aceleración (ease-in) */
     animation: efecto-caida 1.5s ease-in infinite;
 }
+
+/* --- NUEVO PARA CONVERSIONES --- */
+
+/* Animación Balanza (balanceo suave) */
+@keyframes balanceo {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.anim-balanza {
+    animation: balanceo 3s ease-in-out infinite;
+}
+
+/* Luz Verde para tarjeta Conversiones */
+#card-conv:hover {
+    border-color: #10b981;
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+}
