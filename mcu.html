@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCU - Física I</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <a href="index.html" class="logo"><span>⚡</span> BUAP</a>
+            <nav class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="mcu.html" class="active">MCU</a>
+                <a href="caida.html">Caída Libre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 100px;">
+        <section>
+            <h1>Movimiento Circular Uniforme</h1>
+            <p>Simulación interactiva de partículas en rotación constante.</p>
+            
+            <div class="sim-wrapper" style="margin-top: 40px;">
+                <!-- Lienzo -->
+                <div class="canvas-container">
+                    <canvas id="mcuCanvas"></canvas>
+                </div>
+
+                <!-- Controles -->
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Radio (r): <span id="val-r" style="color: var(--primary)">2.0 m</span></label>
+                        <input type="range" id="range-r" min="1" max="4" step="0.1" value="2.0">
+                    </div>
+                    <div class="control-group">
+                        <label>Vel. Angular (ω): <span id="val-w" style="color: var(--primary)">1.0 rad/s</span></label>
+                        <input type="range" id="range-w" min="0.5" max="5" step="0.1" value="1.0">
+                    </div>
+
+                    <div class="data-panel">
+                        <div class="data-row"><span>Velocidad (v):</span> <span class="val" id="out-v">0.00 m/s</span></div>
+                        <div class="data-row"><span>Aceleración (ac):</span> <span class="val" id="out-ac">0.00 m/s²</span></div>
+                        <div class="data-row"><span>Periodo (T):</span> <span class="val" id="out-t">0.00 s</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/simulacion_mcu.js"></script>
+</body>
+</html>
