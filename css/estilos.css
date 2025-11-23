@@ -89,6 +89,18 @@ section { padding: 60px 0; }
     border: var(--glass-border);
     border-radius: 12px;
     padding: 20px;
+    transition: all 0.3s ease; /* Asegura que la luz aparezca suavemente */
+}
+
+.card:hover {
+    transform: translateY(-8px);  /* Sube un poco más */
+    border-color: var(--primary); /* Borde azul */
+    
+    /* ESTA ES LA MAGIA (LUZ): */
+    /* Sombra horizontal | vertical | difuminado | color con transparencia */
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4); 
+    
+    cursor: pointer; /* Cambia el cursor a manita */
 }
 
 .formula-card {
