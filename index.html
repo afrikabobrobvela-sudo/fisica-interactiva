@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Física I - BUAP</title>
     <link rel="stylesheet" href="css/estilos.css">
-    <!-- FontAwesome para iconos (CDN estable) -->
+    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -13,9 +13,9 @@
     <header>
         <div class="container header-flex">
             <a href="index.html" class="logo">
-    <img src="img/logo-buap.png" alt="Logo BUAP" class="logo-img">
-    BUAP Física
-</a>
+                <img src="img/logo-buap.png" alt="Logo BUAP" class="logo-img">
+                BUAP Física
+            </a>
             <nav class="nav-links">
                 <a href="mcu.html">MCU</a>
                 <a href="caida.html">Caída Libre</a>
@@ -23,30 +23,28 @@
         </div>
     </header>
 
-    <section class="hero">
+    <section style="height: 90vh; display: flex; align-items: center; text-align: center;">
         <div class="container">
-            <h1>Laboratorio Virtual de Física</h1>
-            <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.2rem;">
-                Material interactivo oficial para la materia Física I.<br>
-                <strong>Dr. Rodrigo Vela</strong>
+            <h1 style="font-size: 3.5rem; margin-bottom: 10px; color: white;">Laboratorio Virtual</h1>
+            <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 50px;">
+                Material interactivo para la materia <strong>Física I</strong><br>
+                Dr. Rodrigo Vela
             </p>
             
-            <div class="grid-responsive" style="max-width: 800px; margin: 0 auto;">
+            <div class="concept-grid" style="max-width: 800px; margin: 0 auto;">
                 <!-- Tarjeta MCU -->
-                <div class="card" style="text-align: center;">
-                    <i class="fa-solid fa-spin fa-circle-notch" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <a href="mcu.html" class="card" style="text-decoration: none; color: inherit; transition: transform 0.2s;">
+                    <i class="fa-solid fa-circle-notch" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
                     <h3>Movimiento Circular</h3>
-                    <p style="margin: 1rem 0; font-size: 0.9rem; color: #94a3b8;">Simulación de velocidad angular, periodo y aceleración centrípeta.</p>
-                    <a href="mcu.html" class="btn">Entrar al tema</a>
-                </div>
+                    <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 10px;">Velocidad angular, periodo y frecuencia.</p>
+                </a>
 
                 <!-- Tarjeta Caída Libre -->
-                <div class="card" style="text-align: center;">
-                    <i class="fa-solid fa-arrow-down-long" style="font-size: 3rem; color: var(--danger); margin-bottom: 1rem;"></i>
+                <a href="caida.html" class="card" style="text-decoration: none; color: inherit; transition: transform 0.2s;">
+                    <i class="fa-solid fa-arrow-down" style="font-size: 3rem; color: var(--danger); margin-bottom: 15px;"></i>
                     <h3>Caída Libre</h3>
-                    <p style="margin: 1rem 0; font-size: 0.9rem; color: #94a3b8;">Experimenta con la gravedad en diferentes planetas.</p>
-                    <a href="caida.html" class="btn">Entrar al tema</a>
-                </div>
+                    <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 10px;">Gravedad y movimiento vertical en el vacío.</p>
+                </a>
             </div>
         </div>
     </section>

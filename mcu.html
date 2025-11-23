@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCU - Física I</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <header>
         <div class="container header-flex">
             <a href="index.html" class="logo">
-    <img src="img/logo-buap.png" alt="Logo BUAP" class="logo-img">
-    BUAP Física
-</a>
+                <img src="img/logo-buap.png" alt="Logo BUAP" class="logo-img">
+                BUAP Física
+            </a>
             <nav class="nav-links">
                 <a href="index.html">Inicio</a>
                 <a href="mcu.html" class="active">MCU</a>
@@ -23,17 +24,66 @@
     </header>
 
     <main class="container" style="margin-top: 100px;">
-        <section>
+        
+        <!-- TEORÍA -->
+        <section class="theory-section">
             <h1>Movimiento Circular Uniforme</h1>
-            <p>Simulación interactiva de partículas en rotación constante.</p>
-            
-            <div class="sim-wrapper" style="margin-top: 40px;">
-                <!-- Lienzo -->
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px;">
+                El MCU describe el movimiento de un cuerpo que sigue una trayectoria circular manteniendo una <strong>rapidez constante</strong>.
+            </p>
+
+            <div class="card" style="border-left: 4px solid var(--primary); margin-bottom: 40px;">
+                <h3 style="color: white;">💡 Concepto Clave</h3>
+                <p style="margin-top: 5px; color: #cbd5e1;">
+                    Aunque la rapidez (número) no cambia, la <strong>dirección</strong> del movimiento cambia en todo momento. Esto significa que existe una aceleración llamada <strong>Aceleración Centrípeta</strong> que apunta hacia el centro.
+                </p>
+            </div>
+
+            <h2>Variables Fundamentales</h2>
+            <div class="concept-grid">
+                <div class="formula-card">
+                    <h4><i class="fa-solid fa-clock"></i> Periodo (T)</h4>
+                    <p style="font-size: 0.9rem; margin-top: 5px;">Tiempo que tarda en dar una vuelta completa. (Segundos).</p>
+                </div>
+                <div class="formula-card">
+                    <h4><i class="fa-solid fa-wave-square"></i> Frecuencia (f)</h4>
+                    <p style="font-size: 0.9rem; margin-top: 5px;">Número de vueltas por segundo. (Hertz).</p>
+                </div>
+                <div class="formula-card">
+                    <h4><i class="fa-solid fa-rotate"></i> Vel. Angular (ω)</h4>
+                    <p style="font-size: 0.9rem; margin-top: 5px;">Ángulo recorrido por unidad de tiempo. (rad/s).</p>
+                </div>
+            </div>
+
+            <h2>Fórmulas</h2>
+            <div class="concept-grid">
+                <div class="card">
+                    <small>Velocidad Angular</small>
+                    <div class="math">ω = 2π / T</div>
+                </div>
+                <div class="card">
+                    <small>Velocidad Lineal</small>
+                    <div class="math">v = ω · r</div>
+                </div>
+                <div class="card">
+                    <small>Aceleración Centrípeta</small>
+                    <div class="math">a<sub>c</sub> = v² / r</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIMULACIÓN -->
+        <section id="simulacion" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px;">
+            <div class="theory-section text-center">
+                <h2>Simulador Interactivo</h2>
+                <p>Modifica el radio y la velocidad angular para ver el efecto en los vectores.</p>
+            </div>
+
+            <div class="sim-wrapper">
                 <div class="canvas-container">
                     <canvas id="mcuCanvas"></canvas>
                 </div>
 
-                <!-- Controles -->
                 <div class="controls">
                     <div class="control-group">
                         <label>Radio (r): <span id="val-r" style="color: var(--primary)">2.0 m</span></label>
@@ -44,15 +94,28 @@
                         <input type="range" id="range-w" min="0.5" max="5" step="0.1" value="1.0">
                     </div>
 
-                    <div class="data-panel">
-                        <div class="data-row"><span>Velocidad (v):</span> <span class="val" id="out-v">0.00 m/s</span></div>
-                        <div class="data-row"><span>Aceleración (ac):</span> <span class="val" id="out-ac">0.00 m/s²</span></div>
-                        <div class="data-row"><span>Periodo (T):</span> <span class="val" id="out-t">0.00 s</span></div>
+                    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+
+                    <div style="font-family: var(--font-mono); font-size: 0.9rem;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>Velocidad (v):</span> <span id="out-v" style="color: var(--accent);">0.00 m/s</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>Aceleración (ac):</span> <span id="out-ac" style="color: var(--danger);">0.00 m/s²</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                            <span>Periodo (T):</span> <span id="out-t">0.00 s</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.8rem;">
+        <p>&copy; 2024 Física I - BUAP</p>
+    </footer>
 
     <script src="js/simulacion_mcu.js"></script>
 </body>

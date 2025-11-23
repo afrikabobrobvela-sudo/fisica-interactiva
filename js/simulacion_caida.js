@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const ctx = canvas.getContext('2d');
     
-    const els = {
+    const ui = {
         planet: document.getElementById('sel-planet'),
-        height: document.getElementById('range-h'),
-        lblH: document.getElementById('val-h'),
-        btn: document.getElementById('btn-action'),
+        hRange: document.getElementById('range-h'),
+        hLabel: document.getElementById('val-h'),
+        btnStart: document.getElementById('btn-action'),
         btnReset: document.getElementById('btn-reset'),
         outT: document.getElementById('out-t'),
         outY: document.getElementById('out-y'),
@@ -18,67 +18,79 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     let state = {
-        g: 9.81, h0: 50, y: 50, v: 0, t: 0,
-        running: false, finished: false, lastTime: 0
+        g: 9.81,
+        h0: 50,
+        y: 50,
+        v: 0,
+        t: 0,
+        running: false,
+        finished: false,
+        lastTime: 0
     };
 
-    // Configuración inicial
+    // Resize
     function resize() {
         canvas.width = canvas.parentElement.clientWidth;
         canvas.height = canvas.parentElement.clientHeight;
-        if(!state.running && !state.finished) draw(); // Redibujar estático
+        if(!state.running) draw();
     }
     window.addEventListener('resize', resize);
     resize();
 
-    // Listeners
-    els.height.addEventListener('input', (e) => {
+    // Inputs
+    ui.hRange.addEventListener('input', (e) => {
         if(state.running) return;
         state.h0 = parseFloat(e.target.value);
         state.y = state.h0;
-        els.lblH.textContent = state.h0 + ' m';
+        ui.hLabel.textContent = state.h0 + ' m';
         draw();
     });
 
-    els.planet.addEventListener('change', (e) => {
+    ui.planet.addEventListener('change', (e) => {
         state.g = parseFloat(e.target.value);
     });
 
-    els.btn.addEventListener('click', () => {
+    ui.btnStart.addEventListener('click', () => {
         if(!state.running && !state.finished) {
             state.running = true;
             state.lastTime = performance.now();
-            els.btn.disabled = true;
+            ui.btnStart.textContent = "Cayendo...";
+            ui.btnStart.disabled = true;
+            ui.hRange.disabled = true;
             requestAnimationFrame(loop);
         }
     });
 
-    els.btnReset.addEventListener('click', reset);
-
-    function reset() {
+    ui.btnReset.addEventListener('click', () => {
         state.running = false;
         state.finished = false;
-        state.t = 0; state.v = 0;
+        state.t = 0;
+        state.v = 0;
         state.y = state.h0;
-        els.btn.disabled = false;
+        ui.btnStart.textContent = "Soltar Objeto";
+        ui.btnStart.disabled = false;
+        ui.hRange.disabled = false;
         updateUI();
         draw();
-    }
+    });
 
     function loop(timestamp) {
         if(!state.running) return;
-        
+
         const dt = (timestamp - state.lastTime) / 1000;
         state.lastTime = timestamp;
 
+        // Física
         state.v += state.g * dt;
         state.y -= state.v * dt;
         state.t += dt;
 
+        // Colisión suelo
         if(state.y <= 0) {
             state.y = 0;
             state.running = false;
             state.finished = true;
+            ui.btnStart.textContent = "Terminado";
         }
 
         updateUI();
@@ -88,28 +100,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateUI() {
-        els.outT.textContent = state.t.toFixed(2) + ' s';
-        els.outY.textContent = state.y.toFixed(2) + ' m';
-        els.outV.textContent = state.v.toFixed(2) + ' m/s';
+        ui.outT.textContent = state.t.toFixed(2) + ' s';
+        ui.outY.textContent = state.y.toFixed(2) + ' m';
+        ui.outV.textContent = state.v.toFixed(2) + ' m/s';
     }
 
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Dibujar suelo
+        // Suelo
         const groundH = 40;
-        ctx.fillStyle = '#334155';
+        ctx.fillStyle = '#1e293b';
         ctx.fillRect(0, canvas.height - groundH, canvas.width, groundH);
 
-        // Escala visual
-        const drawH = canvas.height - groundH - 20; 
-        const scale = drawH / state.h0; // Píxeles por metro basado en altura inicial
+        // Escala
+        const drawH = canvas.height - groundH - 30;
+        const scale = drawH / state.h0;
         
-        // Objeto
         const cx = canvas.width / 2;
         const cy = (canvas.height - groundH) - (state.y * scale);
-        
-        // Línea guía
+
+        // Guía
         ctx.beginPath();
         ctx.strokeStyle = 'rgba(255,255,255,0.1)';
         ctx.setLineDash([5,5]);
@@ -118,10 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // Bola
+        // Objeto
         ctx.beginPath();
         ctx.fillStyle = '#ef4444';
-        ctx.arc(cx, cy, 10, 0, Math.PI*2);
+        ctx.arc(cx, cy, 12, 0, Math.PI*2);
         ctx.fill();
     }
 });

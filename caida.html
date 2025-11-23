@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caída Libre - Física I</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <header>
         <div class="container header-flex">
             <a href="index.html" class="logo">
-    <img src="img/logo-buap.png" alt="Logo BUAP" class="logo-img">
-    BUAP Física
-</a>
+                <img src="img/logo-buap.png" alt="Logo BUAP" class="logo-img">
+                BUAP Física
+            </a>
             <nav class="nav-links">
                 <a href="index.html">Inicio</a>
                 <a href="mcu.html">MCU</a>
@@ -23,43 +24,89 @@
     </header>
 
     <main class="container" style="margin-top: 100px;">
-        <section>
+        
+        <section class="theory-section">
             <h1>Caída Libre</h1>
-            <p>Experimento de gravedad en vacío ideal.</p>
-            
-            <div class="sim-wrapper" style="margin-top: 40px;">
-                <!-- Lienzo -->
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px;">
+                Es el movimiento de un cuerpo bajo la acción exclusiva de un campo gravitatorio, despreciando la resistencia del aire.
+            </p>
+
+            <div class="card" style="border-left: 4px solid var(--danger); margin-bottom: 40px;">
+                <h3 style="color: white;">⚠️ Dato Importante</h3>
+                <p style="margin-top: 5px; color: #cbd5e1;">
+                    En el vacío, todos los cuerpos caen con la misma aceleración (g), sin importar su masa. Una pluma y un martillo caerían al mismo tiempo.
+                </p>
+            </div>
+
+            <h2>Ecuaciones Principales</h2>
+            <div class="concept-grid">
+                <div class="card">
+                    <small>Posición final</small>
+                    <div class="math">y = y₀ + v₀t - ½gt²</div>
+                </div>
+                <div class="card">
+                    <small>Velocidad final</small>
+                    <div class="math">v = v₀ - gt</div>
+                </div>
+                <div class="card">
+                    <small>Sin tiempo</small>
+                    <div class="math">v² = v₀² - 2g(y - y₀)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIMULACIÓN -->
+        <section id="simulacion" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px;">
+            <div class="theory-section text-center">
+                <h2>Laboratorio de Gravedad</h2>
+                <p>Suelta un objeto desde diferentes alturas y en distintos planetas.</p>
+            </div>
+
+            <div class="sim-wrapper">
                 <div class="canvas-container">
                     <canvas id="caidaCanvas"></canvas>
                 </div>
 
-                <!-- Controles -->
                 <div class="controls">
                     <div class="control-group">
                         <label>Planeta</label>
                         <select id="sel-planet">
-                            <option value="9.81">Tierra (9.81)</option>
-                            <option value="1.62">Luna (1.62)</option>
-                            <option value="3.71">Marte (3.71)</option>
+                            <option value="9.81">Tierra (9.81 m/s²)</option>
+                            <option value="1.62">Luna (1.62 m/s²)</option>
+                            <option value="3.71">Marte (3.71 m/s²)</option>
+                            <option value="24.79">Júpiter (24.79 m/s²)</option>
                         </select>
                     </div>
                     <div class="control-group">
-                        <label>Altura Inicial: <span id="val-h" style="color: var(--danger)">50 m</span></label>
+                        <label>Altura (m): <span id="val-h" style="color: var(--danger)">50 m</span></label>
                         <input type="range" id="range-h" min="10" max="100" value="50">
                     </div>
 
-                    <button id="btn-action" class="btn" style="width: 100%; margin-bottom: 10px;">Soltar Objeto</button>
-                    <button id="btn-reset" class="btn" style="width: 100%; background: #334155;">Reiniciar</button>
+                    <button id="btn-action" class="btn">Soltar Objeto</button>
+                    <button id="btn-reset" class="btn" style="background: #334155;">Reiniciar</button>
 
-                    <div class="data-panel">
-                        <div class="data-row"><span>Tiempo:</span> <span class="val" id="out-t">0.00 s</span></div>
-                        <div class="data-row"><span>Altura:</span> <span class="val" id="out-y">50.00 m</span></div>
-                        <div class="data-row"><span>Velocidad:</span> <span class="val" id="out-v">0.00 m/s</span></div>
+                    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+
+                    <div style="font-family: var(--font-mono); font-size: 0.9rem;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>Tiempo:</span> <span id="out-t">0.00 s</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>Altura:</span> <span id="out-y">50.00 m</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                            <span>Velocidad:</span> <span id="out-v" style="color: var(--accent);">0.00 m/s</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.8rem;">
+        <p>&copy; 2024 Física I - BUAP</p>
+    </footer>
 
     <script src="js/simulacion_caida.js"></script>
 </body>
