@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversiones - Física I</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <a href="index.html" class="logo">
+                <img src="img/logo-buap.png" alt="Logo BUAP" class="logo-img">
+                BUAP Física
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="mcu.html">MCU</a>
+                <a href="caida.html">Caída Libre</a>
+                <a href="conversiones.html" class="active">Conversiones</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 100px;">
+        
+        <!-- TEORÍA -->
+        <section class="theory-section">
+            <h1>Conversión de Unidades</h1>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px;">
+                En física, no basta con el número; la unidad lo es todo. Convertir unidades es el proceso de transformar una medida a otro sistema equivalente usando <strong>Factores de Conversión</strong>.
+            </p>
+
+            <div class="card" style="border-left: 4px solid #10b981; margin-bottom: 40px;">
+                <h3 style="color: white;">💡 El Secreto: Multiplicar por 1</h3>
+                <p style="margin-top: 5px; color: #cbd5e1;">
+                    Un factor de conversión es una fracción que vale 1. Por ejemplo, como <strong>1 km = 1000 m</strong>, la fracción <em>(1000m / 1km)</em> vale matemáticamente 1. Al multiplicar, cambiamos la "etiqueta" sin cambiar el valor real de la cantidad.
+                </p>
+            </div>
+
+            <h2>Sistemas de Unidades</h2>
+            <div class="concept-grid">
+                <div class="formula-card">
+                    <h4><i class="fa-solid fa-globe"></i> Sistema Internacional (SI)</h4>
+                    <p style="font-size: 0.9rem; margin-top: 5px;">El estándar científico. Metro (m), Kilogramo (kg), Segundo (s).</p>
+                </div>
+                <div class="formula-card">
+                    <h4><i class="fa-solid fa-flag-usa"></i> Sistema Inglés</h4>
+                    <p style="font-size: 0.9rem; margin-top: 5px;">Usado en EE.UU. e ingeniería antigua. Pie (ft), Libra (lb), Pulgada (in).</p>
+                </div>
+                <div class="formula-card">
+                    <h4><i class="fa-solid fa-microscope"></i> Prefijos</h4>
+                    <p style="font-size: 0.9rem; margin-top: 5px;">
+                        <strong>Kilo (k)</strong> = 1,000<br>
+                        <strong>Centi (c)</strong> = 0.01<br>
+                        <strong>Mili (m)</strong> = 0.001
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIMULACIÓN -->
+        <section id="simulacion" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px;">
+            <div class="theory-section text-center">
+                <h2>Pizarra de Análisis Dimensional</h2>
+                <p>Ingresa un valor y observa cómo se construye la ecuación y se cancelan las unidades visualmente.</p>
+            </div>
+
+            <div class="sim-wrapper">
+                <!-- Canvas / Pizarrón -->
+                <div class="canvas-container" style="background-color: #0f3d28; border: 4px solid #1f2937;"> <!-- Color pizarrón verde oscuro -->
+                    <canvas id="convCanvas"></canvas>
+                </div>
+
+                <!-- Controles -->
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Magnitud</label>
+                        <select id="type-select">
+                            <option value="longitud">📏 Longitud</option>
+                            <option value="masa">⚖️ Masa</option>
+                            <option value="tiempo">⏱️ Tiempo</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Valor a convertir:</label>
+                        <input type="number" id="input-val" value="1" step="0.1" style="font-size:1.2rem;">
+                    </div>
+
+                    <div style="display: flex; gap: 10px;">
+                        <div class="control-group" style="flex:1;">
+                            <label>De:</label>
+                            <select id="unit-from"></select>
+                        </div>
+                        <div class="control-group" style="flex:1;">
+                            <label>A:</label>
+                            <select id="unit-to"></select>
+                        </div>
+                    </div>
+
+                    <div class="card" style="background: rgba(0,0,0,0.2); margin-top: 15px; text-align: center;">
+                        <span style="font-size: 0.9rem; color: #94a3b8;">Resultado:</span>
+                        <h2 id="result-text" style="color: #10b981;">...</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.8rem;">
+        <p>&copy; 2024 Física I - BUAP</p>
+    </footer>
+
+    <script src="js/simulacion_conversiones.js"></script>
+</body>
+</html>
