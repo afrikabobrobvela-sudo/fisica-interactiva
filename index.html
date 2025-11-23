@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Física I - Dr. Rodrigo Vela</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            font-family: system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        .subtitle { color: #94a3b8; margin-bottom: 40px; }
+        .grid { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .card {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            width: 250px;
+            border: 1px solid #334155;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover { transform: translateY(-5px); border-color: #3b82f6; }
+        .icon { font-size: 3rem; display: block; margin-bottom: 15px; }
+        h2 { margin: 0; color: #3b82f6; }
+    </style>
+</head>
+<body>
+    <h1>Física I</h1>
+    <p class="subtitle">Material Interactivo - BUAP</p>
+    
+    <div class="grid">
+        <a href="mcu.html" class="card">
+            <span class="icon">💫</span>
+            <h2>MCU</h2>
+            <p>Movimiento Circular Uniforme</p>
+        </a>
+        <a href="caida.html" class="card">
+            <span class="icon">⬇️</span>
+            <h2>Caída Libre</h2>
+            <p>Gravedad y movimiento vertical</p>
+        </a>
+    </div>
+</body>
+</html>
