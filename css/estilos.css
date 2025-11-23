@@ -217,8 +217,14 @@ input[type=range], select {
     animation: balanceo 3s ease-in-out infinite;
 }
 
-/* Luz Verde para tarjeta Conversiones */
-#card-conv:hover {
-    border-color: #10b981;
-    box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+/* Luz Azul para MCU */
+#card-mcu:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+/* Luz Roja para Caída Libre */
+#card-caida:hover {
+    border-color: var(--danger);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
 }
